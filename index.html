@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу | 15 июля 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'blush': '#E8B4B8',
+                        'blush-dark': '#D4A5A5',
+                        'sage': '#C1D3C8',
+                        'cream': '#FFF8F0',
+                        'cream-dark': '#F5E6D3',
+                        'gold': '#D4AF37',
+                        'charcoal': '#4A4A4A'
+                    },
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background-color: #FFF8F0;
+            color: #4A4A4A;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Animated gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #FFF8F0 0%, #F5E6D3 50%, #E8B4B8 100%);
+            z-index: -2;
+        }
+        
+        /* Floating bokeh circles */
+        .bg-circle {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float-bg 20s ease-in-out infinite;
+        }
+        
+        .bg-circle-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(232, 180, 184, 0.6) 0%, transparent 70%);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+        
+        .bg-circle-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            top: 20%;
+            right: -50px;
+            animation-delay: -5s;
+        }
+        
+        .bg-circle-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(193, 211, 200, 0.4) 0%, transparent 70%);
+            bottom: 10%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+        
+        .bg-circle-4 {
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(232, 180, 184, 0.3) 0%, transparent 70%);
+            bottom: -100px;
+            right: 10%;
+            animation-delay: -15s;
+        }
+        
+        @keyframes float-bg {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #D4A5A5 0%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .heart-beat {
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .timeline-line {
+            background: linear-gradient(to bottom, #E8B4B8, #C1D3C8);
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #E8B4B8;
+            box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.2);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-cream/90 backdrop-blur-md border-b border-blush/20">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-serif text-2xl text-blush-dark italic">M & D</div>
+            <div class="hidden md:flex space-x-8 text-sm tracking-widest">
+                <a href="#date" class="hover:text-blush-dark transition-colors">ДАТА</a>
+                <a href="#schedule" class="hover:text-blush-dark transition-colors">ПРОГРАММА</a>
+                <a href="#rsvp" class="hover:text-blush-dark transition-colors">ОТВЕТ</a>
+                <a href="#accommodation" class="hover:text-blush-dark transition-colors">ЖИЛЬЁ</a>
+            </div>
+            <button onclick="toggleMobileMenu()" class="md:hidden">
+                <i data-lucide="menu" class="w-6 h-6 text-charcoal"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cream border-t border-blush/20">
+            <div class="flex flex-col p-6 space-y-4 text-center">
+                <a href="#date" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ДАТА</a>
+                <a href="#schedule" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ПРОГРАММА</a>
+                <a href="#rsvp" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ОТВЕТ</a>
+                <a href="#accommodation" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ЖИЛЬЁ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative px-6 pt-20 pb-12">
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 left-10 floating opacity-20">
+                <i data-lucide="flower-2" class="w-24 h-24 text-blush"></i>
+            </div>
+            <div class="absolute bottom-20 right-10 floating opacity-20" style="animation-delay: 2s;">
+                <i data-lucide="heart" class="w-32 h-32 text-blush-dark"></i>
+            </div>
+            <div class="absolute top-40 right-20 floating opacity-15" style="animation-delay: 1s;">
+                <i data-lucide="sparkles" class="w-16 h-16 text-gold"></i>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="mb-6 flex justify-center">
+                <i data-lucide="rings" class="w-16 h-16 text-gold heart-beat"></i>
+            </div>
+            <p class="text-sm tracking-[0.3em] text-blush-dark mb-4 uppercase">Приглашаем вас разделить наше счастье</p>
+            <h1 class="font-serif text-6xl md:text-8xl mb-2 text-charcoal">Марк & Дарья</h1>
+            <p class="font-serif text-3xl md:text-4xl italic text-blush-dark mb-8">в день нашей свадьбы</p>
+            
+            <div class="flex items-center justify-center space-x-4 mb-8 text-lg">
+                <span class="h-px w-12 bg-blush-dark"></span>
+                <span class="font-serif text-2xl">15 июля 2026</span>
+                <span class="h-px w-12 bg-blush-dark"></span>
+            </div>
+            
+            <p class="text-lg mb-12 text-charcoal/80">г. Псков</p>
+            
+            <a href="#rsvp" class="inline-block bg-blush-dark text-white px-8 py-4 rounded-full hover:bg-blush transition-all transform hover:scale-105 shadow-lg tracking-widest text-sm">
+                ПОДТВЕРДИТЬ УЧАСТИЕ
+            </a>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="date" class="py-20 relative z-10">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <i data-lucide="calendar-heart" class="w-12 h-12 text-blush-dark mx-auto mb-6"></i>
+            <h2 class="font-serif text-4xl md:text-5xl mb-8 text-charcoal">До нашей свадьбы осталось</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12">
+                <div class="glass-card rounded-2xl p-6 shadow-sm">
+                    <div id="days" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">000</div>
+                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Дней</div>
+                </div>
+                <div class="glass-card rounded-2xl p-6 shadow-sm">
+                    <div id="hours" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">00</div>
+                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Часов</div>
+                </div>
+                <div class="glass-card rounded-2xl p-6 shadow-sm">
+                    <div id="minutes" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">00</div>
+                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Минут</div>
+                </div>
+                <div class="glass-card rounded-2xl p-6 shadow-sm">
+                    <div id="seconds" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">00</div>
+                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Секунд</div>
+                </div>
+            </div>
+            
+            <p class="font-serif text-2xl italic text-blush-dark">15 июля 2026 года, Псков</p>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <i data-lucide="clock" class="w-12 h-12 text-blush-dark mx-auto mb-4"></i>
+                <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-4">Программа дня</h2>
+                <p class="text-charcoal/60">Примерный график мероприятия</p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 timeline-line rounded-full"></div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-12">
+                    <!-- Item 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
+                        <div class="hidden md:block md:w-5/12 text-right pr-8">
+                            <h3 class="font-serif text-2xl text-charcoal mb-2">Сбор гостей</h3>
+                            <p class="text-charcoal/70">Встречаемся, знакомимся, фотографируемся</p>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-blush rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center">
+                            <i data-lucide="users" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="pl-16 md:pl-0 md:w-5/12 md:pl-8 w-full">
+                            <span class="font-serif text-3xl text-blush-dark">15:00</span>
+                            <div class="md:hidden mt-2">
+                                <h3 class="font-serif text-xl text-charcoal">Сбор гостей</h3>
+                                <p class="text-sm text-charcoal/70">Встречаемся, знакомимся, фотографируемся</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
+                        <div class="pl-16 md:pl-0 md:w-5/12 md:text-right md:pr-8 w-full order-2 md:order-1">
+                            <span class="font-serif text-3xl text-blush-dark">16:00</span>
+                            <div class="md:hidden mt-2">
+                                <h3 class="font-serif text-xl text-charcoal">Выездная регистрация</h3>
+                                <p class="text-sm text-charcoal/70">Торжественная часть церемонии</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-blush-dark rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center order-1">
+                            <i data-lucide="heart" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="hidden md:block md:w-5/12 md:pl-8 order-3">
+                            <h3 class="font-serif text-2xl text-charcoal mb-2">Выездная регистрация</h3>
+                            <p class="text-charcoal/70">Торжественная часть церемонии</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
+                        <div class="hidden md:block md:w-5/12 text-right pr-8">
+                            <h3 class="font-serif text-2xl text-charcoal mb-2">Фуршет</h3>
+                            <p class="text-charcoal/70">Лёгкие закуски, напитки, общение</p>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-sage rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center">
+                            <i data-lucide="wine" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="pl-16 md:pl-0 md:w-5/12 md:pl-8 w-full">
+                            <span class="font-serif text-3xl text-blush-dark">17:00</span>
+                            <div class="md:hidden mt-2">
+                                <h3 class="font-serif text-xl text-charcoal">Фуршет</h3>
+                                <p class="text-sm text-charcoal/70">Лёгкие закуски, напитки, общение</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
+                        <div class="pl-16 md:pl-0 md:w-5/12 md:text-right md:pr-8 w-full order-2 md:order-1">
+                            <span class="font-serif text-3xl text-blush-dark">18:00</span>
+                            <div class="md:hidden mt-2">
+                                <h3 class="font-serif text-xl text-charcoal">Банкет</h3>
+                                <p class="text-sm text-charcoal/70">Праздничный ужин, танцы, веселье</p>
+                            </div>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gold rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center order-1">
+                            <i data-lucide="utensils" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="hidden md:block md:w-5/12 md:pl-8 order-3">
+                            <h3 class="font-serif text-2xl text-charcoal mb-2">Банкет</h3>
+                            <p class="text-charcoal/70">Праздничный ужин, танцы, веселье до утра</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5 -->
+                    <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
+                        <div class="hidden md:block md:w-5/12 text-right pr-8">
+                            <h3 class="font-serif text-2xl text-charcoal mb-2">Окончание</h3>
+                            <p class="text-charcoal/70">Поездка на afterparty (по желанию)</p>
+                        </div>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-blush rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center">
+                            <i data-lucide="moon" class="w-4 h-4 text-white"></i>
+                        </div>
+                        <div class="pl-16 md:pl-0 md:w-5/12 md:pl-8 w-full">
+                            <span class="font-serif text-3xl text-blush-dark">22:00</span>
+                            <div class="md:hidden mt-2">
+                                <h3 class="font-serif text-xl text-charcoal">Окончание</h3>
+                                <p class="text-sm text-charcoal/70">Поездка на afterparty (по желанию)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Form Section -->
+    <section id="rsvp" class="py-20 px-6 relative z-10">
+        <div class="max-w-2xl mx-auto">
+            <div class="text-center mb-12">
+                <i data-lucide="mail-heart" class="w-12 h-12 text-blush-dark mx-auto mb-4"></i>
+                <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-4">Подтвердите участие</h2>
+                <p class="text-charcoal/60 mb-2">Чем раньше вы подтвердите участие, тем лучше</p>
+                <p class="text-sm text-blush-dark">Электронная почта: markas050@gmail.com</p>
+            </div>
+
+            <form id="rsvp-form" class="glass-card rounded-3xl p-6 md:p-10 shadow-xl border-2 border-blush/30">
+                <!-- Name -->
+                <div class="mb-8">
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-3 flex items-center gap-2">
+                        <i data-lucide="users" class="w-4 h-4 text-blush-dark"></i>
+                        Ваши имена <span class="text-blush-dark">*</span>
+                    </label>
+                    <input type="text" name="name" required placeholder="Например: Иван и Мария Петровы" 
+                        class="w-full bg-white border-2 border-blush/40 rounded-xl px-4 py-4 text-charcoal placeholder-charcoal/40 transition-all hover:border-blush-dark focus:border-blush-dark focus:ring-4 focus:ring-blush/20">
+                </div>
+
+                <!-- Attendance -->
+                <div class="mb-8">
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-4 flex items-center gap-2">
+                        <i data-lucide="calendar-check" class="w-4 h-4 text-blush-dark"></i>
+                        Придёте ли вы? <span class="text-blush-dark">*</span>
+                    </label>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="attendance" value="yes" class="hidden peer" required>
+                            <div class="relative text-center py-4 px-4 border-2 border-blush/40 rounded-xl peer-checked:bg-blush peer-checked:border-blush peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-blush-dark hover:bg-blush/5 active:scale-95 bg-white">
+                                <div class="flex justify-center mb-2">
+                                    <i data-lucide="heart" class="w-6 h-6 text-blush-dark peer-checked:text-white transition-colors"></i>
+                                </div>
+                                <div class="font-medium text-sm">С радостью!</div>
+                                <div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 transition-opacity">
+                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="attendance" value="no" class="hidden peer">
+                            <div class="relative text-center py-4 px-4 border-2 border-charcoal/20 rounded-xl peer-checked:bg-charcoal peer-checked:border-charcoal peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-charcoal/40 hover:bg-charcoal/5 active:scale-95 bg-white">
+                                <div class="flex justify-center mb-2">
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-charcoal/60 peer-checked:text-white transition-colors"></i>
+                                </div>
+                                <div class="font-medium text-sm">К сожалению, нет</div>
+                                <div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 transition-opacity">
+                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer group">
+                            <input type="radio" name="attendance" value="maybe" class="hidden peer">
+                            <div class="relative text-center py-4 px-4 border-2 border-gold/40 rounded-xl peer-checked:bg-gold peer-checked:border-gold peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-gold/60 hover:bg-gold/5 active:scale-95 bg-white">
+                                <div class="flex justify-center mb-2">
+                                    <i data-lucide="help-circle" class="w-6 h-6 text-gold peer-checked:text-white transition-colors"></i>
+                                </div>
+                                <div class="font-medium text-sm">Пока не знаю</div>
+                                <div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 transition-opacity">
+                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Food Preferences -->
+                <div class="mb-8">
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-4 flex items-center gap-2">
+                        <i data-lucide="utensils" class="w-4 h-4 text-blush-dark"></i>
+                        Предпочтения по еде
+                    </label>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="beef" class="w-6 h-6 text-orange-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-charcoal">Мясо / Птица</div>
+                            </div>
+                            <input type="checkbox" name="food" value="meat" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="fish" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-charcoal">Рыба / Морепродукты</div>
+                            </div>
+                            <input type="checkbox" name="food" value="fish" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="leaf" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-charcoal">Вегетарианское</div>
+                            </div>
+                            <input type="checkbox" name="food" value="vegetarian" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="carrot" class="w-6 h-6 text-emerald-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-charcoal">Веганское</div>
+                            </div>
+                            <input type="checkbox" name="food" value="vegan" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                    </div>
+                    <div class="mt-4 p-4 bg-white rounded-xl border-2 border-blush/20">
+                        <label class="flex items-center gap-2 mb-2 text-sm font-medium text-charcoal/70">
+                            <i data-lucide="alert-circle" class="w-4 h-4 text-blush-dark"></i>
+                            Аллергии или особые требования
+                        </label>
+                        <input type="text" name="allergies" placeholder="Укажите, если есть" 
+                            class="w-full bg-transparent border-b-2 border-blush/30 focus:border-blush-dark py-2 text-charcoal placeholder-charcoal/40 focus:outline-none">
+                    </div>
+                </div>
+
+                <!-- Alcohol Preferences -->
+                <div class="mb-8">
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-4 flex items-center gap-2">
+                        <i data-lucide="wine" class="w-4 h-4 text-blush-dark"></i>
+                        Предпочтения по алкоголю
+                    </label>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="wine" class="w-5 h-5 text-red-600"></i>
+                            </div>
+                            <span class="font-medium text-sm">Вино</span>
+                            <input type="checkbox" name="alcohol" value="wine" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-600"></i>
+                            </div>
+                            <span class="font-medium text-sm">Шампанское</span>
+                            <input type="checkbox" name="alcohol" value="champagne" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="glass-water" class="w-5 h-5 text-amber-700"></i>
+                            </div>
+                            <span class="font-medium text-sm">Виски</span>
+                            <input type="checkbox" name="alcohol" value="whiskey" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="flask-conical" class="w-5 h-5 text-pink-600"></i>
+                            </div>
+                            <span class="font-medium text-sm">Коктейли</span>
+                            <input type="checkbox" name="alcohol" value="cocktails" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white col-span-2 md:col-span-1">
+                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="ban" class="w-5 h-5 text-gray-600"></i>
+                            </div>
+                            <span class="font-medium text-sm">Не пью</span>
+                            <input type="checkbox" name="alcohol" value="none" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Comments -->
+                <div class="mb-8">
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-3 flex items-center gap-2">
+                        <i data-lucide="message-circle" class="w-4 h-4 text-blush-dark"></i>
+                        Комментарии
+                    </label>
+                    <textarea name="comments" rows="3" placeholder="Ваши пожелания, вопросы или особые приметы..." 
+                        class="w-full bg-white border-2 border-blush/40 rounded-xl px-4 py-4 text-charcoal placeholder-charcoal/40 resize-none transition-all hover:border-blush-dark focus:border-blush-dark focus:ring-4 focus:ring-blush/20"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full bg-blush-dark text-white py-5 rounded-xl hover:bg-blush transition-all transform active:scale-95 shadow-xl font-semibold tracking-wider uppercase text-base flex items-center justify-center gap-2 group">
+                    <span>Отправить ответ</span>
+                    <i data-lucide="send" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                </button>
+                <p class="text-center text-xs text-charcoal/50 mt-4">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
+            </form>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="success-message" class="hidden glass-card rounded-3xl p-12 shadow-xl text-center mt-8">
+                <i data-lucide="heart" class="w-16 h-16 text-blush-dark mx-auto mb-4 heart-beat"></i>
+                <h3 class="font-serif text-3xl text-charcoal mb-4">Спасибо!</h3>
+                <p class="text-charcoal/70 mb-6">Ваш ответ успешно отправлен. Мы свяжемся с вами при необходимости.</p>
+                <p class="text-sm text-blush-dark">Если у вас возникнут вопросы, пишите на markas050@gmail.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accommodation Section -->
+    <section id="accommodation" class="py-20 px-6 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+            <div class="glass-card rounded-3xl p-8 md:p-12 shadow-xl border-2 border-blush/20">
+                <i data-lucide="home" class="w-12 h-12 text-blush-dark mx-auto mb-6"></i>
+                <h2 class="font-serif text-3xl md:text-4xl text-charcoal mb-6">Нужно жильё в Пскове?</h2>
+                <p class="text-charcoal/70 mb-6 leading-relaxed">
+                    Если вам нужна помощь с размещением в городе Пскове на время нашей свадьбы, 
+                    мы с радостью поможем подобрать для вас лучшие варианты отелей, апартаментов или гостевых домов.
+                </p>
+                <p class="text-charcoal/70 mb-8">
+                    Просто напишите нам заранее, и мы подберём удобное место рядом с местом проведения торжества.
+                </p>
+                
+                <div class="bg-cream/50 rounded-2xl p-6 inline-block">
+                    <p class="text-sm tracking-widest uppercase text-charcoal/60 mb-2">Напишите нам</p>
+                    <a href="mailto:markas050@gmail.com" class="font-serif text-2xl text-blush-dark hover:text-blush transition-colors flex items-center justify-center space-x-2">
+                        <i data-lucide="mail" class="w-6 h-6"></i>
+                        <span>markas050@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-charcoal text-white text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="flex justify-center items-center space-x-4 mb-6">
+                <i data-lucide="heart" class="w-6 h-6 text-blush heart-beat"></i>
+                <span class="font-serif text-2xl">M & D</span>
+                <i data-lucide="heart" class="w-6 h-6 text-blush heart-beat" style="animation-delay: 1s;"></i>
+            </div>
+            <p class="text-white/60 text-sm mb-4">С любовью, Марк и Дарья</p>
+            <p class="text-white/40 text-xs">15 июля 2026 • Псков</p>
+        </div>
+    </footer>
+
+    <!-- Background decorative circles -->
+    <div class="bg-circle bg-circle-1"></div>
+    <div class="bg-circle bg-circle-2"></div>
+    <div class="bg-circle bg-circle-3"></div>
+    <div class="bg-circle bg-circle-4"></div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('2026-07-15T15:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (isNaN(distance)) {
+                document.getElementById('days').textContent = '000';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.max(0, Math.floor(distance / (1000 * 60 * 60 * 24)));
+            const hours = Math.max(0, Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+            const minutes = Math.max(0, Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+            const seconds = Math.max(0, Math.floor((distance % (1000 * 60)) / 1000));
+
+            document.getElementById('days').textContent = String(days).padStart(3, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Form handling with Formspree
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            // Disable button during submission
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Отправка...</span>';
+            
+            // Collect form data
+            const formData = new FormData(form);
+            
+            // Formspree form ID: mdalwzzv
+            fetch('https://formspree.io/f/mdalwzzv', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('rsvp-form').classList.add('hidden');
+                    const successMessage = document.getElementById('success-message');
+                    successMessage.classList.remove('hidden');
+                    
+                    // Scroll to success message with offset for better visibility
+                    setTimeout(() => {
+                        successMessage.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        
+                        // Add highlight animation
+                        successMessage.classList.add('ring-4', 'ring-blush', 'ring-opacity-50');
+                        setTimeout(() => {
+                            successMessage.classList.remove('ring-4', 'ring-blush', 'ring-opacity-50');
+                        }, 2000);
+                    }, 100);
+                    
+                    lucide.createIcons();
+                } else {
+                    throw new Error('Ошибка отправки');
+                }
+            })
+            .catch(error => {
+                alert('Ошибка при отправке формы. Пожалуйста, попробуйте ещё раз или напишите напрямую на markas050@gmail.com');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                lucide.createIcons();
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections below hero for animation (excluding RSVP form)
+        // Using CSS class instead of inline style to avoid stuck opacity
+        document.querySelectorAll('section:not(:first-of-type):not(#rsvp) > div').forEach(div => {
+            div.classList.add('opacity-0');
+            observer.observe(div);
+        });
+
+        // Fallback: show all content after 3 seconds if observer fails
+        setTimeout(() => {
+            document.querySelectorAll('.opacity-0').forEach(el => {
+                if (!el.classList.contains('fade-in')) {
+                    el.classList.remove('opacity-0');
+                    el.style.opacity = '1';
+                }
+            });
+        }, 3000);
+    </script>
+<script src="https://deepsite.hf.co/deepsite-badge.js"></script>
+</body>
+</html>
