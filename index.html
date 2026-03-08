@@ -357,17 +357,7 @@
                         class="w-full bg-white/80 border-2 border-mist/60 rounded-xl px-4 py-4 text-mountain placeholder-slate/40 transition-all hover:border-slate focus:border-slate focus:ring-4 focus:ring-mist/30">
                 </div>
 
-                <!-- Guest Count -->
-                <div class="mb-8">
-                    <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-3 flex items-center gap-2">
-                        <i data-lucide="user-plus" class="w-4 h-4 text-slate"></i>
-                        Количество гостей <span class="text-slate">*</span>
-                    </label>
-                    <input type="number" name="guest_count" required min="1" placeholder="Введите число" 
-                        class="w-full bg-white/80 border-2 border-mist/60 rounded-xl px-4 py-4 text-mountain placeholder-slate/40 transition-all hover:border-slate focus:border-slate focus:ring-4 focus:ring-mist/30">
-                </div>
-
-                <!-- Attendance -->
+                <!-- Attendance (Always visible) -->
                 <div class="mb-8">
                     <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-4 flex items-center gap-2">
                         <i data-lucide="calendar-check" class="w-4 h-4 text-slate"></i>
@@ -375,7 +365,7 @@
                     </label>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <label class="cursor-pointer group">
-                            <input type="radio" name="attendance" value="yes" class="hidden peer" required>
+                            <input type="radio" name="attendance" value="yes" id="attendance-yes" class="hidden peer" required>
                             <div class="relative text-center py-4 px-4 border-2 border-slate/30 rounded-xl peer-checked:bg-slate-dark peer-checked:border-slate-dark peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-slate hover:bg-slate/5 active:scale-95 bg-white">
                                 <div class="flex justify-center mb-2">
                                     <i data-lucide="heart" class="w-6 h-6 text-slate peer-checked:text-white transition-colors"></i>
@@ -387,7 +377,7 @@
                             </div>
                         </label>
                         <label class="cursor-pointer group">
-                            <input type="radio" name="attendance" value="no" class="hidden peer">
+                            <input type="radio" name="attendance" value="no" id="attendance-no" class="hidden peer">
                             <div class="relative text-center py-4 px-4 border-2 border-mountain/20 rounded-xl peer-checked:bg-mountain peer-checked:border-mountain peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-mountain/40 hover:bg-mountain/5 active:scale-95 bg-white">
                                 <div class="flex justify-center mb-2">
                                     <i data-lucide="x-circle" class="w-6 h-6 text-mountain/60 peer-checked:text-white transition-colors"></i>
@@ -399,131 +389,153 @@
                             </div>
                         </label>
                     </div>
-                </div>
-
-                <!-- Food Preferences -->
-                <div class="mb-8">
-                    <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-4 flex items-center gap-2">
-                        <i data-lucide="utensils" class="w-4 h-4 text-slate"></i>
-                        Предпочтения по еде
-                    </label>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
-                            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="beef" class="w-6 h-6 text-slate-600"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-medium text-mountain">Мясо / Птица</div>
-                            </div>
-                            <input type="checkbox" name="food" value="meat" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
-                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="fish" class="w-6 h-6 text-blue-500"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-medium text-mountain">Рыба / Морепродукты</div>
-                            </div>
-                            <input type="checkbox" name="food" value="fish" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
-                            <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="leaf" class="w-6 h-6 text-emerald-600"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-medium text-mountain">Вегетарианское</div>
-                            </div>
-                            <input type="checkbox" name="food" value="vegetarian" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
-                            <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="carrot" class="w-6 h-6 text-teal-600"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-medium text-mountain">Веганское</div>
-                            </div>
-                            <input type="checkbox" name="food" value="vegan" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
-                        </label>
-                    </div>
-                    <div class="mt-4 p-4 bg-white rounded-xl border-2 border-mist/40">
-                        <label class="flex items-center gap-2 mb-2 text-sm font-medium text-mountain/70">
-                            <i data-lucide="alert-circle" class="w-4 h-4 text-slate"></i>
-                            Аллергии или особые требования
-                        </label>
-                        <input type="text" name="allergies" placeholder="Укажите, если есть" 
-                            class="w-full bg-transparent border-b-2 border-mist/50 focus:border-slate py-2 text-mountain placeholder-slate/40 focus:outline-none">
+                    
+                    <!-- Message for No response -->
+                    <div id="no-message" class="hidden mt-6 p-6 bg-stone border border-mist rounded-xl text-center">
+                        <i data-lucide="heart-crack" class="w-8 h-8 text-slate mx-auto mb-2"></i>
+                        <p class="text-mountain font-serif text-lg">Нам очень жаль, что вы не сможете прийти!</p>
+                        <p class="text-slate text-sm mt-1">Спасибо, что сообщили нам.</p>
                     </div>
                 </div>
 
-                <!-- Alcohol Preferences -->
-                <div class="mb-8">
-                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-4 flex items-center gap-2">
-                        <i data-lucide="wine" class="w-4 h-4 text-blush-dark"></i>
-                        Предпочтения по алкоголю
-                    </label>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
-                            <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="wine" class="w-5 h-5 text-red-600"></i>
-                            </div>
-                            <span class="font-medium text-sm">Вино</span>
-                            <input type="checkbox" name="alcohol" value="wine" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                <!-- Extra Fields (shown only when attending YES) -->
+                <div id="attending-fields" class="transition-all duration-500 ease-in-out" style="display: none;">
+                
+                    <!-- Guest Count -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-3 flex items-center gap-2">
+                            <i data-lucide="user-plus" class="w-4 h-4 text-slate"></i>
+                            Количество гостей <span class="text-slate">*</span>
                         </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
-                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="sparkles" class="w-5 h-5 text-yellow-600"></i>
-                            </div>
-                            <span class="font-medium text-sm">Шампанское</span>
-                            <input type="checkbox" name="alcohol" value="champagne" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
-                            <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="glass-water" class="w-5 h-5 text-amber-700"></i>
-                            </div>
-                            <span class="font-medium text-sm">Крепкое</span>
-                            <input type="checkbox" name="alcohol" value="whiskey" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
-                            <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="flask-conical" class="w-5 h-5 text-pink-600"></i>
-                            </div>
-                            <span class="font-medium text-sm">Коктейли</span>
-                            <input type="checkbox" name="alcohol" value="cocktails" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white col-span-2 md:col-span-1">
-                            <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="ban" class="w-5 h-5 text-gray-600"></i>
-                            </div>
-                            <span class="font-medium text-sm">Не пью</span>
-                            <input type="checkbox" name="alcohol" value="none" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
-                        </label>
+                        <input type="number" name="guest_count" min="1" placeholder="Введите число" 
+                            class="w-full bg-white/80 border-2 border-mist/60 rounded-xl px-4 py-4 text-mountain placeholder-slate/40 transition-all hover:border-slate focus:border-slate focus:ring-4 focus:ring-mist/30">
                     </div>
-                </div>
 
-                <!-- Comments -->
-                <div class="mb-8">
-                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-3 flex items-center gap-2">
-                        <i data-lucide="message-circle" class="w-4 h-4 text-blush-dark"></i>
-                        Комментарии
-                    </label>
-                    <textarea name="comments" rows="3" placeholder="Ваши пожелания, вопросы или особые приметы..." 
-                        class="w-full bg-white border-2 border-blush/40 rounded-xl px-4 py-4 text-charcoal placeholder-charcoal/40 resize-none transition-all hover:border-blush-dark focus:border-blush-dark focus:ring-4 focus:ring-blush/20"></textarea>
-                </div>
+                    <!-- Food Preferences -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-4 flex items-center gap-2">
+                            <i data-lucide="utensils" class="w-4 h-4 text-slate"></i>
+                            Предпочтения по еде
+                        </label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="beef" class="w-6 h-6 text-slate-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-medium text-mountain">Мясо / Птица</div>
+                                </div>
+                                <input type="checkbox" name="food" value="meat" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="fish" class="w-6 h-6 text-blue-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-medium text-mountain">Рыба / Морепродукты</div>
+                                </div>
+                                <input type="checkbox" name="food" value="fish" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="leaf" class="w-6 h-6 text-emerald-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-medium text-mountain">Вегетарианское</div>
+                                </div>
+                                <input type="checkbox" name="food" value="vegetarian" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="carrot" class="w-6 h-6 text-teal-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="font-medium text-mountain">Веганское</div>
+                                </div>
+                                <input type="checkbox" name="food" value="vegan" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                        </div>
+                        <div class="mt-4 p-4 bg-white rounded-xl border-2 border-mist/40">
+                            <label class="flex items-center gap-2 mb-2 text-sm font-medium text-mountain/70">
+                                <i data-lucide="alert-circle" class="w-4 h-4 text-slate"></i>
+                                Аллергии или особые требования
+                            </label>
+                            <input type="text" name="allergies" placeholder="Укажите, если есть" 
+                                class="w-full bg-transparent border-b-2 border-mist/50 focus:border-slate py-2 text-mountain placeholder-slate/40 focus:outline-none">
+                        </div>
+                    </div>
+
+                    <!-- Alcohol Preferences -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-4 flex items-center gap-2">
+                            <i data-lucide="wine" class="w-4 h-4 text-slate"></i>
+                            Предпочтения по алкоголю
+                        </label>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="wine" class="w-5 h-5 text-red-600"></i>
+                                </div>
+                                <span class="font-medium text-sm">Вино</span>
+                                <input type="checkbox" name="alcohol" value="wine" class="ml-auto w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="sparkles" class="w-5 h-5 text-yellow-600"></i>
+                                </div>
+                                <span class="font-medium text-sm">Шампанское</span>
+                                <input type="checkbox" name="alcohol" value="champagne" class="ml-auto w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="glass-water" class="w-5 h-5 text-amber-700"></i>
+                                </div>
+                                <span class="font-medium text-sm">Крепкое</span>
+                                <input type="checkbox" name="alcohol" value="whiskey" class="ml-auto w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                                <div class="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="flask-conical" class="w-5 h-5 text-pink-600"></i>
+                                </div>
+                                <span class="font-medium text-sm">Коктейли</span>
+                                <input type="checkbox" name="alcohol" value="cocktails" class="ml-auto w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                            <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white col-span-2 md:col-span-1">
+                                <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="ban" class="w-5 h-5 text-gray-600"></i>
+                                </div>
+                                <span class="font-medium text-sm">Не пью</span>
+                                <input type="checkbox" name="alcohol" value="none" class="ml-auto w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Comments -->
+                    <div class="mb-8">
+                        <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-3 flex items-center gap-2">
+                            <i data-lucide="message-circle" class="w-4 h-4 text-slate"></i>
+                            Комментарии
+                        </label>
+                        <textarea name="comments" rows="3" placeholder="Ваши пожелания, вопросы или особые приметы..." 
+                            class="w-full bg-white border-2 border-mist/40 rounded-xl px-4 py-4 text-mountain placeholder-slate/40 resize-none transition-all hover:border-slate focus:border-slate focus:ring-4 focus:ring-mist/30"></textarea>
+                    </div>
+                
+                </div><!-- /attending-fields -->
 
                 <!-- Submit Button -->
-                <button type="submit" class="w-full bg-blush-dark text-white py-5 rounded-xl hover:bg-blush transition-all transform active:scale-95 shadow-xl font-semibold tracking-wider uppercase text-base flex items-center justify-center gap-2 group">
+                <button type="submit" class="w-full bg-slate-dark text-white py-5 rounded-xl hover:bg-slate transition-all transform active:scale-95 shadow-xl font-semibold tracking-wider uppercase text-base flex items-center justify-center gap-2 group">
                     <span>Отправить ответ</span>
                     <i data-lucide="send" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
                 </button>
-                <p class="text-center text-xs text-charcoal/50 mt-4">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
+                <p class="text-center text-xs text-mountain/50 mt-4">Нажимая кнопку, вы соглашаетесь с обработкой данных</p>
             </form>
 
             <!-- Success Message (Hidden by default) -->
             <div id="success-message" class="hidden glass-card rounded-3xl p-12 shadow-xl text-center mt-8">
-                <i data-lucide="heart" class="w-16 h-16 text-blush-dark mx-auto mb-4 heart-beat"></i>
-                <h3 class="font-serif text-3xl text-charcoal mb-4">Спасибо!</h3>
-                <p class="text-charcoal/70 mb-6">Ваш ответ успешно отправлен. Мы свяжемся с вами при необходимости.</p>
-                <p class="text-sm text-blush-dark">Если у вас возникнут вопросы, пишите на markas050@gmail.com</p>
+                <i data-lucide="heart" class="w-16 h-16 text-slate-dark mx-auto mb-4 heart-beat"></i>
+                <h3 class="font-serif text-3xl text-mountain mb-4">Спасибо!</h3>
+                <p class="text-mountain/70 mb-6">Ваш ответ успешно отправлен. Мы свяжемся с вами при необходимости.</p>
+                <p class="text-sm text-slate-dark">Если у вас возникнут вопросы, пишите на markas050@gmail.com</p>
             </div>
         </div>
     </section>
@@ -711,6 +723,51 @@
                 }
             });
         }, 3000);
+
+        // Attendance toggle logic
+        const attendanceYes = document.getElementById('attendance-yes');
+        const attendanceNo = document.getElementById('attendance-no');
+        const attendingFields = document.getElementById('attending-fields');
+        const noMessage = document.getElementById('no-message');
+        const guestCountInput = document.querySelector('input[name="guest_count"]');
+        
+        function updateFormVisibility() {
+            if (attendanceNo.checked) {
+                // Hide attending-only fields
+                if (attendingFields) attendingFields.style.display = 'none';
+                if (noMessage) noMessage.classList.remove('hidden');
+                // Make guest count not required
+                if (guestCountInput) guestCountInput.required = false;
+            } else if (attendanceYes.checked) {
+                // Show attending-only fields
+                if (attendingFields) attendingFields.style.display = 'block';
+                if (noMessage) noMessage.classList.add('hidden');
+                // Make guest count required
+                if (guestCountInput) guestCountInput.required = true;
+            } else {
+                // Nothing selected - hide attending fields by default
+                if (attendingFields) attendingFields.style.display = 'none';
+                if (noMessage) noMessage.classList.add('hidden');
+                if (guestCountInput) guestCountInput.required = false;
+            }
+            
+            // Re-render icons for newly visible content
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+        
+        // Initial state
+        updateFormVisibility();
+        
+        // Event listeners
+        if (attendanceYes) attendanceYes.addEventListener('change', updateFormVisibility);
+        if (attendanceNo) attendanceNo.addEventListener('change', updateFormVisibility);
+        
+        // Re-render icons for dynamically shown content
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     </script>
 <script src="https://deepsite.hf.co/deepsite-badge.js"></script>
 </body>
