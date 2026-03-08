@@ -13,13 +13,15 @@
             theme: {
                 extend: {
                     colors: {
-                        'blush': '#E8B4B8',
-                        'blush-dark': '#D4A5A5',
-                        'sage': '#C1D3C8',
-                        'cream': '#FFF8F0',
-                        'cream-dark': '#F5E6D3',
-                        'gold': '#D4AF37',
-                        'charcoal': '#4A4A4A'
+                        'mist': '#E2E8F0',
+                        'mist-dark': '#CBD5E1',
+                        'slate': '#64748B',
+                        'slate-dark': '#475569',
+                        'stone': '#F8FAFC',
+                        'stone-dark': '#F1F5F9',
+                        'mountain': '#334155',
+                        'cloud': '#94A3B8',
+                        'fog': '#E2E8F0'
                     },
                     fontFamily: {
                         'serif': ['Cormorant Garamond', 'serif'],
@@ -32,13 +34,13 @@
     
     <style>
         body {
-            background-color: #FFF8F0;
-            color: #4A4A4A;
+            background-color: #F8FAFC;
+            color: #334155;
             position: relative;
             overflow-x: hidden;
         }
         
-        /* Animated gradient background */
+        /* Animated gradient background - cloudy mist */
         body::before {
             content: '';
             position: fixed;
@@ -46,64 +48,64 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #FFF8F0 0%, #F5E6D3 50%, #E8B4B8 100%);
+            background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #CBD5E1 100%);
             z-index: -2;
         }
         
-        /* Floating bokeh circles */
+        /* Floating cloud circles */
         .bg-circle {
             position: fixed;
             border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.4;
+            filter: blur(80px);
+            opacity: 0.3;
             z-index: -1;
-            animation: float-bg 20s ease-in-out infinite;
+            animation: float-bg 25s ease-in-out infinite;
         }
         
         .bg-circle-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(232, 180, 184, 0.6) 0%, transparent 70%);
-            top: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(203, 213, 225, 0.5) 0%, transparent 70%);
+            top: -150px;
             left: -100px;
             animation-delay: 0s;
         }
         
         .bg-circle-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(148, 163, 184, 0.3) 0%, transparent 70%);
             top: 20%;
-            right: -50px;
+            right: -100px;
             animation-delay: -5s;
         }
         
         .bg-circle-3 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(193, 211, 200, 0.4) 0%, transparent 70%);
-            bottom: 10%;
-            left: 20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(226, 232, 240, 0.4) 0%, transparent 70%);
+            bottom: 5%;
+            left: 10%;
             animation-delay: -10s;
         }
         
         .bg-circle-4 {
-            width: 350px;
-            height: 350px;
-            background: radial-gradient(circle, rgba(232, 180, 184, 0.3) 0%, transparent 70%);
-            bottom: -100px;
-            right: 10%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(241, 245, 249, 0.5) 0%, transparent 70%);
+            bottom: -150px;
+            right: 5%;
             animation-delay: -15s;
         }
         
         @keyframes float-bg {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -30px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
+            33% { transform: translate(40px, -20px) scale(1.05); }
+            66% { transform: translate(-30px, 30px) scale(0.95); }
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #D4A5A5 0%, #D4AF37 100%);
+            background: linear-gradient(135deg, #475569 0%, #64748B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -138,80 +140,59 @@
         }
         
         .timeline-line {
-            background: linear-gradient(to bottom, #E8B4B8, #C1D3C8);
+            background: linear-gradient(to bottom, #CBD5E1, #94A3B8);
         }
         
         input:focus, textarea:focus, select:focus {
             outline: none;
-            border-color: #E8B4B8;
-            box-shadow: 0 0 0 3px rgba(232, 180, 184, 0.2);
+            border-color: #94A3B8;
+            box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.2);
         }
         
         .glass-card {
-            background: rgba(255, 255, 255, 0.7);
+            background: rgba(248, 250, 252, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-cream/90 backdrop-blur-md border-b border-blush/20">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-serif text-2xl text-blush-dark italic">M & D</div>
-            <div class="hidden md:flex space-x-8 text-sm tracking-widest">
-                <a href="#date" class="hover:text-blush-dark transition-colors">ДАТА</a>
-                <a href="#schedule" class="hover:text-blush-dark transition-colors">ПРОГРАММА</a>
-                <a href="#rsvp" class="hover:text-blush-dark transition-colors">ОТВЕТ</a>
-                <a href="#accommodation" class="hover:text-blush-dark transition-colors">ЖИЛЬЁ</a>
-            </div>
-            <button onclick="toggleMobileMenu()" class="md:hidden">
-                <i data-lucide="menu" class="w-6 h-6 text-charcoal"></i>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-cream border-t border-blush/20">
-            <div class="flex flex-col p-6 space-y-4 text-center">
-                <a href="#date" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ДАТА</a>
-                <a href="#schedule" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ПРОГРАММА</a>
-                <a href="#rsvp" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ОТВЕТ</a>
-                <a href="#accommodation" onclick="toggleMobileMenu()" class="hover:text-blush-dark">ЖИЛЬЁ</a>
-            </div>
-        </div>
-    </nav>
-
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative px-6 pt-20 pb-12">
+    <section class="min-h-screen flex items-center justify-center relative px-6 pt-12 pb-12">
         <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute top-20 left-10 floating opacity-20">
-                <i data-lucide="flower-2" class="w-24 h-24 text-blush"></i>
+            <div class="absolute top-20 left-10 floating opacity-10">
+                <i data-lucide="cloud" class="w-32 h-32 text-slate"></i>
             </div>
-            <div class="absolute bottom-20 right-10 floating opacity-20" style="animation-delay: 2s;">
-                <i data-lucide="heart" class="w-32 h-32 text-blush-dark"></i>
+            <div class="absolute bottom-32 left-20 floating opacity-10" style="animation-delay: 3s;">
+                <i data-lucide="cloud" class="w-24 h-24 text-mist-dark"></i>
             </div>
-            <div class="absolute top-40 right-20 floating opacity-15" style="animation-delay: 1s;">
-                <i data-lucide="sparkles" class="w-16 h-16 text-gold"></i>
+            <div class="absolute top-40 right-20 floating opacity-10" style="animation-delay: 1s;">
+                <i data-lucide="mountain" class="w-20 h-20 text-slate"></i>
+            </div>
+            <div class="absolute bottom-20 right-10 floating opacity-10" style="animation-delay: 2s;">
+                <i data-lucide="cloud" class="w-28 h-28 text-slate"></i>
             </div>
         </div>
 
         <div class="max-w-4xl mx-auto text-center relative z-10">
             <div class="mb-6 flex justify-center">
-                <i data-lucide="rings" class="w-16 h-16 text-gold heart-beat"></i>
+                <i data-lucide="mountain-snow" class="w-16 h-16 text-slate-dark heart-beat"></i>
             </div>
-            <p class="text-sm tracking-[0.3em] text-blush-dark mb-4 uppercase">Приглашаем вас разделить наше счастье</p>
-            <h1 class="font-serif text-6xl md:text-8xl mb-2 text-charcoal">Марк & Дарья</h1>
-            <p class="font-serif text-3xl md:text-4xl italic text-blush-dark mb-8">в день нашей свадьбы</p>
+            <p class="text-sm tracking-[0.3em] text-slate mb-4 uppercase">Приглашаем вас разделить наше счастье</p>
+            <h1 class="font-serif text-6xl md:text-8xl mb-2 text-mountain">Марк & Дарья</h1>
+            <p class="font-serif text-3xl md:text-4xl italic text-slate mb-8">в день нашей свадьбы</p>
             
             <div class="flex items-center justify-center space-x-4 mb-8 text-lg">
-                <span class="h-px w-12 bg-blush-dark"></span>
+                <span class="h-px w-12 bg-mist-dark"></span>
                 <span class="font-serif text-2xl">15 июля 2026</span>
-                <span class="h-px w-12 bg-blush-dark"></span>
+                <span class="h-px w-12 bg-mist-dark"></span>
             </div>
             
-            <p class="text-lg mb-12 text-charcoal/80">г. Псков</p>
+            <p class="text-lg mb-2 text-mountain/80">г. Псков</p>
+            <p class="text-lg mb-12 text-slate-dark font-medium">Гостевая усадьба «Лесной Оазис»</p>
             
-            <a href="#rsvp" class="inline-block bg-blush-dark text-white px-8 py-4 rounded-full hover:bg-blush transition-all transform hover:scale-105 shadow-lg tracking-widest text-sm">
+            <a href="#rsvp" class="inline-block bg-slate-dark text-white px-8 py-4 rounded-full hover:bg-slate transition-all transform hover:scale-105 shadow-lg tracking-widest text-sm">
                 ПОДТВЕРДИТЬ УЧАСТИЕ
             </a>
         </div>
@@ -220,29 +201,29 @@
     <!-- Countdown Section -->
     <section id="date" class="py-20 relative z-10">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <i data-lucide="calendar-heart" class="w-12 h-12 text-blush-dark mx-auto mb-6"></i>
-            <h2 class="font-serif text-4xl md:text-5xl mb-8 text-charcoal">До нашей свадьбы осталось</h2>
+            <i data-lucide="calendar-heart" class="w-12 h-12 text-slate-dark mx-auto mb-6"></i>
+            <h2 class="font-serif text-4xl md:text-5xl mb-8 text-mountain">До нашей свадьбы осталось</h2>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-12">
                 <div class="glass-card rounded-2xl p-6 shadow-sm">
-                    <div id="days" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">000</div>
-                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Дней</div>
+                    <div id="days" class="font-serif text-4xl md:text-5xl text-slate-dark mb-2">000</div>
+                    <div class="text-xs tracking-widest uppercase text-mountain/60">Дней</div>
                 </div>
                 <div class="glass-card rounded-2xl p-6 shadow-sm">
-                    <div id="hours" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">00</div>
-                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Часов</div>
+                    <div id="hours" class="font-serif text-4xl md:text-5xl text-slate-dark mb-2">00</div>
+                    <div class="text-xs tracking-widest uppercase text-mountain/60">Часов</div>
                 </div>
                 <div class="glass-card rounded-2xl p-6 shadow-sm">
-                    <div id="minutes" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">00</div>
-                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Минут</div>
+                    <div id="minutes" class="font-serif text-4xl md:text-5xl text-slate-dark mb-2">00</div>
+                    <div class="text-xs tracking-widest uppercase text-mountain/60">Минут</div>
                 </div>
                 <div class="glass-card rounded-2xl p-6 shadow-sm">
-                    <div id="seconds" class="font-serif text-4xl md:text-5xl text-blush-dark mb-2">00</div>
-                    <div class="text-xs tracking-widest uppercase text-charcoal/60">Секунд</div>
+                    <div id="seconds" class="font-serif text-4xl md:text-5xl text-slate-dark mb-2">00</div>
+                    <div class="text-xs tracking-widest uppercase text-mountain/60">Секунд</div>
                 </div>
             </div>
             
-            <p class="font-serif text-2xl italic text-blush-dark">15 июля 2026 года, Псков</p>
+            <p class="font-serif text-2xl italic text-slate">15 июля 2026 года, Псков</p>
         </div>
     </section>
 
@@ -250,9 +231,9 @@
     <section id="schedule" class="py-20 px-6">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <i data-lucide="clock" class="w-12 h-12 text-blush-dark mx-auto mb-4"></i>
-                <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-4">Программа дня</h2>
-                <p class="text-charcoal/60">Примерный график мероприятия</p>
+                <i data-lucide="clock" class="w-12 h-12 text-slate-dark mx-auto mb-4"></i>
+                <h2 class="font-serif text-4xl md:text-5xl text-mountain mb-4">Программа дня</h2>
+                <p class="text-mountain/60">Примерный график мероприятия</p>
             </div>
 
             <div class="relative">
@@ -264,17 +245,17 @@
                     <!-- Item 1 -->
                     <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
                         <div class="hidden md:block md:w-5/12 text-right pr-8">
-                            <h3 class="font-serif text-2xl text-charcoal mb-2">Сбор гостей</h3>
-                            <p class="text-charcoal/70">Встречаемся, знакомимся, фотографируемся</p>
+                            <h3 class="font-serif text-2xl text-mountain mb-2">Трансфер из Пскова</h3>
+                            <p class="text-mountain/70">Отправление в усадьбу «Лесной Оазис»</p>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-blush rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center">
-                            <i data-lucide="users" class="w-4 h-4 text-white"></i>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-slate rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center">
+                            <i data-lucide="bus" class="w-4 h-4 text-white"></i>
                         </div>
                         <div class="pl-16 md:pl-0 md:w-5/12 md:pl-8 w-full">
-                            <span class="font-serif text-3xl text-blush-dark">15:00</span>
+                            <span class="font-serif text-3xl text-slate-dark">14:00</span>
                             <div class="md:hidden mt-2">
-                                <h3 class="font-serif text-xl text-charcoal">Сбор гостей</h3>
-                                <p class="text-sm text-charcoal/70">Встречаемся, знакомимся, фотографируемся</p>
+                                <h3 class="font-serif text-xl text-mountain">Трансфер из Пскова</h3>
+                                <p class="text-sm text-mountain/70">Отправление в усадьбу «Лесной Оазис»</p>
                             </div>
                         </div>
                     </div>
@@ -282,35 +263,35 @@
                     <!-- Item 2 -->
                     <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
                         <div class="pl-16 md:pl-0 md:w-5/12 md:text-right md:pr-8 w-full order-2 md:order-1">
-                            <span class="font-serif text-3xl text-blush-dark">16:00</span>
+                            <span class="font-serif text-3xl text-slate-dark">15:00</span>
                             <div class="md:hidden mt-2">
-                                <h3 class="font-serif text-xl text-charcoal">Выездная регистрация</h3>
-                                <p class="text-sm text-charcoal/70">Торжественная часть церемонии</p>
+                                <h3 class="font-serif text-xl text-mountain">Начало церемонии</h3>
+                                <p class="text-sm text-mountain/70">Торжественная часть</p>
                             </div>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-blush-dark rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center order-1">
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-slate-dark rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center order-1">
                             <i data-lucide="heart" class="w-4 h-4 text-white"></i>
                         </div>
                         <div class="hidden md:block md:w-5/12 md:pl-8 order-3">
-                            <h3 class="font-serif text-2xl text-charcoal mb-2">Выездная регистрация</h3>
-                            <p class="text-charcoal/70">Торжественная часть церемонии</p>
+                            <h3 class="font-serif text-2xl text-mountain mb-2">Начало церемонии</h3>
+                            <p class="text-mountain/70">Торжественная часть</p>
                         </div>
                     </div>
 
                     <!-- Item 3 -->
                     <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
                         <div class="hidden md:block md:w-5/12 text-right pr-8">
-                            <h3 class="font-serif text-2xl text-charcoal mb-2">Фуршет</h3>
-                            <p class="text-charcoal/70">Лёгкие закуски, напитки, общение</p>
+                            <h3 class="font-serif text-2xl text-mountain mb-2">Банкет</h3>
+                            <p class="text-mountain/70">Праздничный ужин и тёплая атмосфера</p>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-sage rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center">
-                            <i data-lucide="wine" class="w-4 h-4 text-white"></i>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-cloud rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center">
+                            <i data-lucide="utensils" class="w-4 h-4 text-white"></i>
                         </div>
                         <div class="pl-16 md:pl-0 md:w-5/12 md:pl-8 w-full">
-                            <span class="font-serif text-3xl text-blush-dark">17:00</span>
+                            <span class="font-serif text-3xl text-slate-dark">16:00 – 21:00</span>
                             <div class="md:hidden mt-2">
-                                <h3 class="font-serif text-xl text-charcoal">Фуршет</h3>
-                                <p class="text-sm text-charcoal/70">Лёгкие закуски, напитки, общение</p>
+                                <h3 class="font-serif text-xl text-mountain">Банкет</h3>
+                                <p class="text-sm text-mountain/70">Праздничный ужин и тёплая атмосфера</p>
                             </div>
                         </div>
                     </div>
@@ -318,35 +299,35 @@
                     <!-- Item 4 -->
                     <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
                         <div class="pl-16 md:pl-0 md:w-5/12 md:text-right md:pr-8 w-full order-2 md:order-1">
-                            <span class="font-serif text-3xl text-blush-dark">18:00</span>
+                            <span class="font-serif text-3xl text-slate-dark">21:00 – 23:00</span>
                             <div class="md:hidden mt-2">
-                                <h3 class="font-serif text-xl text-charcoal">Банкет</h3>
-                                <p class="text-sm text-charcoal/70">Праздничный ужин, танцы, веселье</p>
+                                <h3 class="font-serif text-xl text-mountain">Свободное время и дискотека</h3>
+                                <p class="text-sm text-mountain/70">Танцы и веселье</p>
                             </div>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-gold rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center order-1">
-                            <i data-lucide="utensils" class="w-4 h-4 text-white"></i>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-mist-dark rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center order-1">
+                            <i data-lucide="music" class="w-4 h-4 text-white"></i>
                         </div>
                         <div class="hidden md:block md:w-5/12 md:pl-8 order-3">
-                            <h3 class="font-serif text-2xl text-charcoal mb-2">Банкет</h3>
-                            <p class="text-charcoal/70">Праздничный ужин, танцы, веселье до утра</p>
+                            <h3 class="font-serif text-2xl text-mountain mb-2">Свободное время и дискотека</h3>
+                            <p class="text-mountain/70">Танцы и веселье</p>
                         </div>
                     </div>
 
                     <!-- Item 5 -->
                     <div class="relative flex flex-col md:flex-row items-center md:justify-between group">
                         <div class="hidden md:block md:w-5/12 text-right pr-8">
-                            <h3 class="font-serif text-2xl text-charcoal mb-2">Окончание</h3>
-                            <p class="text-charcoal/70">Поездка на afterparty (по желанию)</p>
+                            <h3 class="font-serif text-2xl text-mountain mb-2">Трансфер обратно</h3>
+                            <p class="text-mountain/70">Возвращение в Псков</p>
                         </div>
-                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-blush rounded-full border-4 border-cream shadow-md z-10 flex items-center justify-center">
-                            <i data-lucide="moon" class="w-4 h-4 text-white"></i>
+                        <div class="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-8 h-8 bg-slate rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center">
+                            <i data-lucide="bus" class="w-4 h-4 text-white"></i>
                         </div>
                         <div class="pl-16 md:pl-0 md:w-5/12 md:pl-8 w-full">
-                            <span class="font-serif text-3xl text-blush-dark">22:00</span>
+                            <span class="font-serif text-3xl text-slate-dark">23:30</span>
                             <div class="md:hidden mt-2">
-                                <h3 class="font-serif text-xl text-charcoal">Окончание</h3>
-                                <p class="text-sm text-charcoal/70">Поездка на afterparty (по желанию)</p>
+                                <h3 class="font-serif text-xl text-mountain">Трансфер обратно</h3>
+                                <p class="text-sm text-mountain/70">Возвращение в Псков</p>
                             </div>
                         </div>
                     </div>
@@ -359,35 +340,45 @@
     <section id="rsvp" class="py-20 px-6 relative z-10">
         <div class="max-w-2xl mx-auto">
             <div class="text-center mb-12">
-                <i data-lucide="mail-heart" class="w-12 h-12 text-blush-dark mx-auto mb-4"></i>
-                <h2 class="font-serif text-4xl md:text-5xl text-charcoal mb-4">Подтвердите участие</h2>
-                <p class="text-charcoal/60 mb-2">Чем раньше вы подтвердите участие, тем лучше</p>
-                <p class="text-sm text-blush-dark">Электронная почта: markas050@gmail.com</p>
+                <i data-lucide="mail-heart" class="w-12 h-12 text-slate-dark mx-auto mb-4"></i>
+                <h2 class="font-serif text-4xl md:text-5xl text-mountain mb-4">Подтвердите участие</h2>
+                <p class="text-mountain/60 mb-2">Чем раньше, тем лучше</p>
+                <p class="text-sm text-slate">Электронная почта: markas050@gmail.com</p>
             </div>
 
-            <form id="rsvp-form" class="glass-card rounded-3xl p-6 md:p-10 shadow-xl border-2 border-blush/30">
+            <form id="rsvp-form" class="glass-card rounded-3xl p-6 md:p-10 shadow-xl border-2 border-mist/50">
                 <!-- Name -->
                 <div class="mb-8">
-                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-3 flex items-center gap-2">
-                        <i data-lucide="users" class="w-4 h-4 text-blush-dark"></i>
-                        Ваши имена <span class="text-blush-dark">*</span>
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-3 flex items-center gap-2">
+                        <i data-lucide="users" class="w-4 h-4 text-slate"></i>
+                        Ваши имена <span class="text-slate">*</span>
                     </label>
                     <input type="text" name="name" required placeholder="Например: Иван и Мария Петровы" 
-                        class="w-full bg-white border-2 border-blush/40 rounded-xl px-4 py-4 text-charcoal placeholder-charcoal/40 transition-all hover:border-blush-dark focus:border-blush-dark focus:ring-4 focus:ring-blush/20">
+                        class="w-full bg-white/80 border-2 border-mist/60 rounded-xl px-4 py-4 text-mountain placeholder-slate/40 transition-all hover:border-slate focus:border-slate focus:ring-4 focus:ring-mist/30">
+                </div>
+
+                <!-- Guest Count -->
+                <div class="mb-8">
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-3 flex items-center gap-2">
+                        <i data-lucide="user-plus" class="w-4 h-4 text-slate"></i>
+                        Количество гостей <span class="text-slate">*</span>
+                    </label>
+                    <input type="number" name="guest_count" required min="1" placeholder="Введите число" 
+                        class="w-full bg-white/80 border-2 border-mist/60 rounded-xl px-4 py-4 text-mountain placeholder-slate/40 transition-all hover:border-slate focus:border-slate focus:ring-4 focus:ring-mist/30">
                 </div>
 
                 <!-- Attendance -->
                 <div class="mb-8">
-                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-4 flex items-center gap-2">
-                        <i data-lucide="calendar-check" class="w-4 h-4 text-blush-dark"></i>
-                        Придёте ли вы? <span class="text-blush-dark">*</span>
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-4 flex items-center gap-2">
+                        <i data-lucide="calendar-check" class="w-4 h-4 text-slate"></i>
+                        Придёте ли вы? <span class="text-slate">*</span>
                     </label>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <label class="cursor-pointer group">
                             <input type="radio" name="attendance" value="yes" class="hidden peer" required>
-                            <div class="relative text-center py-4 px-4 border-2 border-blush/40 rounded-xl peer-checked:bg-blush peer-checked:border-blush peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-blush-dark hover:bg-blush/5 active:scale-95 bg-white">
+                            <div class="relative text-center py-4 px-4 border-2 border-slate/30 rounded-xl peer-checked:bg-slate-dark peer-checked:border-slate-dark peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-slate hover:bg-slate/5 active:scale-95 bg-white">
                                 <div class="flex justify-center mb-2">
-                                    <i data-lucide="heart" class="w-6 h-6 text-blush-dark peer-checked:text-white transition-colors"></i>
+                                    <i data-lucide="heart" class="w-6 h-6 text-slate peer-checked:text-white transition-colors"></i>
                                 </div>
                                 <div class="font-medium text-sm">С радостью!</div>
                                 <div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 transition-opacity">
@@ -397,23 +388,11 @@
                         </label>
                         <label class="cursor-pointer group">
                             <input type="radio" name="attendance" value="no" class="hidden peer">
-                            <div class="relative text-center py-4 px-4 border-2 border-charcoal/20 rounded-xl peer-checked:bg-charcoal peer-checked:border-charcoal peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-charcoal/40 hover:bg-charcoal/5 active:scale-95 bg-white">
+                            <div class="relative text-center py-4 px-4 border-2 border-mountain/20 rounded-xl peer-checked:bg-mountain peer-checked:border-mountain peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-mountain/40 hover:bg-mountain/5 active:scale-95 bg-white">
                                 <div class="flex justify-center mb-2">
-                                    <i data-lucide="x-circle" class="w-6 h-6 text-charcoal/60 peer-checked:text-white transition-colors"></i>
+                                    <i data-lucide="x-circle" class="w-6 h-6 text-mountain/60 peer-checked:text-white transition-colors"></i>
                                 </div>
                                 <div class="font-medium text-sm">К сожалению, нет</div>
-                                <div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 transition-opacity">
-                                    <i data-lucide="check-circle" class="w-5 h-5"></i>
-                                </div>
-                            </div>
-                        </label>
-                        <label class="cursor-pointer group">
-                            <input type="radio" name="attendance" value="maybe" class="hidden peer">
-                            <div class="relative text-center py-4 px-4 border-2 border-gold/40 rounded-xl peer-checked:bg-gold peer-checked:border-gold peer-checked:text-white peer-checked:shadow-lg transition-all hover:border-gold/60 hover:bg-gold/5 active:scale-95 bg-white">
-                                <div class="flex justify-center mb-2">
-                                    <i data-lucide="help-circle" class="w-6 h-6 text-gold peer-checked:text-white transition-colors"></i>
-                                </div>
-                                <div class="font-medium text-sm">Пока не знаю</div>
                                 <div class="absolute top-2 right-2 opacity-0 peer-checked:opacity-100 transition-opacity">
                                     <i data-lucide="check-circle" class="w-5 h-5"></i>
                                 </div>
@@ -424,55 +403,55 @@
 
                 <!-- Food Preferences -->
                 <div class="mb-8">
-                    <label class="block text-sm font-semibold tracking-wider uppercase text-charcoal mb-4 flex items-center gap-2">
-                        <i data-lucide="utensils" class="w-4 h-4 text-blush-dark"></i>
+                    <label class="block text-sm font-semibold tracking-wider uppercase text-mountain mb-4 flex items-center gap-2">
+                        <i data-lucide="utensils" class="w-4 h-4 text-slate"></i>
                         Предпочтения по еде
                     </label>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
-                            <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="beef" class="w-6 h-6 text-orange-600"></i>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                            <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="beef" class="w-6 h-6 text-slate-600"></i>
                             </div>
                             <div class="flex-1">
-                                <div class="font-medium text-charcoal">Мясо / Птица</div>
+                                <div class="font-medium text-mountain">Мясо / Птица</div>
                             </div>
-                            <input type="checkbox" name="food" value="meat" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                            <input type="checkbox" name="food" value="meat" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
                         </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
                             <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="fish" class="w-6 h-6 text-blue-600"></i>
+                                <i data-lucide="fish" class="w-6 h-6 text-blue-500"></i>
                             </div>
                             <div class="flex-1">
-                                <div class="font-medium text-charcoal">Рыба / Морепродукты</div>
+                                <div class="font-medium text-mountain">Рыба / Морепродукты</div>
                             </div>
-                            <input type="checkbox" name="food" value="fish" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                            <input type="checkbox" name="food" value="fish" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
                         </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
-                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="leaf" class="w-6 h-6 text-green-600"></i>
-                            </div>
-                            <div class="flex-1">
-                                <div class="font-medium text-charcoal">Вегетарианское</div>
-                            </div>
-                            <input type="checkbox" name="food" value="vegetarian" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
-                        </label>
-                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
                             <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="carrot" class="w-6 h-6 text-emerald-600"></i>
+                                <i data-lucide="leaf" class="w-6 h-6 text-emerald-600"></i>
                             </div>
                             <div class="flex-1">
-                                <div class="font-medium text-charcoal">Веганское</div>
+                                <div class="font-medium text-mountain">Вегетарианское</div>
                             </div>
-                            <input type="checkbox" name="food" value="vegan" class="w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
+                            <input type="checkbox" name="food" value="vegetarian" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
+                        </label>
+                        <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-mist/40 rounded-xl hover:border-slate/50 hover:bg-slate/5 transition-all active:scale-95 bg-white">
+                            <div class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="carrot" class="w-6 h-6 text-teal-600"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="font-medium text-mountain">Веганское</div>
+                            </div>
+                            <input type="checkbox" name="food" value="vegan" class="w-5 h-5 text-slate border-2 border-slate/30 rounded-lg focus:ring-slate cursor-pointer">
                         </label>
                     </div>
-                    <div class="mt-4 p-4 bg-white rounded-xl border-2 border-blush/20">
-                        <label class="flex items-center gap-2 mb-2 text-sm font-medium text-charcoal/70">
-                            <i data-lucide="alert-circle" class="w-4 h-4 text-blush-dark"></i>
+                    <div class="mt-4 p-4 bg-white rounded-xl border-2 border-mist/40">
+                        <label class="flex items-center gap-2 mb-2 text-sm font-medium text-mountain/70">
+                            <i data-lucide="alert-circle" class="w-4 h-4 text-slate"></i>
                             Аллергии или особые требования
                         </label>
                         <input type="text" name="allergies" placeholder="Укажите, если есть" 
-                            class="w-full bg-transparent border-b-2 border-blush/30 focus:border-blush-dark py-2 text-charcoal placeholder-charcoal/40 focus:outline-none">
+                            class="w-full bg-transparent border-b-2 border-mist/50 focus:border-slate py-2 text-mountain placeholder-slate/40 focus:outline-none">
                     </div>
                 </div>
 
@@ -501,7 +480,7 @@
                             <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
                                 <i data-lucide="glass-water" class="w-5 h-5 text-amber-700"></i>
                             </div>
-                            <span class="font-medium text-sm">Виски</span>
+                            <span class="font-medium text-sm">Крепкое</span>
                             <input type="checkbox" name="alcohol" value="whiskey" class="ml-auto w-5 h-5 text-blush-dark border-2 border-blush/40 rounded-lg focus:ring-blush cursor-pointer">
                         </label>
                         <label class="flex items-center gap-3 cursor-pointer p-3 border-2 border-blush/20 rounded-xl hover:border-blush/50 hover:bg-blush/5 transition-all active:scale-95 bg-white">
